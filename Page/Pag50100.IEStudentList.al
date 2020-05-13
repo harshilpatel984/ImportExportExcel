@@ -44,6 +44,19 @@ page 50100 IE_StudentList
                 Image = Excel;
                 RunObject = report IE_ImportExcel;
             }
+            action(IE_ExportStudentData)
+            {
+                ApplicationArea = All;
+                Caption = 'Export Student Data';
+                Image = Excel;
+                trigger OnAction()
+                var
+                    ExportData: Report IE_ExportExcel;
+                begin
+                    if Rec.FindSet() then
+                        ExportData.Run();
+                end;
+            }
         }
     }
 }
